@@ -1278,6 +1278,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1129267319308971912, guid: 5fcb7578101622f4eaa6065e692b63b6, type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     - target: {fileID: 2725700992388669687, guid: 5fcb7578101622f4eaa6065e692b63b6, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.4508
@@ -1353,6 +1357,18 @@ PrefabInstance:
     - target: {fileID: 3655314735622094080, guid: 5fcb7578101622f4eaa6065e692b63b6, type: 3}
       propertyPath: SprintSpeed
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3655314735622094080, guid: 5fcb7578101622f4eaa6065e692b63b6, type: 3}
+      propertyPath: LockCameraPosition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3655314735622094080, guid: 5fcb7578101622f4eaa6065e692b63b6, type: 3}
+      propertyPath: FootstepAudioVolume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353458682641057264, guid: 5fcb7578101622f4eaa6065e692b63b6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.247
       objectReference: {fileID: 0}
     - target: {fileID: 5635866322052793529, guid: 5fcb7578101622f4eaa6065e692b63b6, type: 3}
       propertyPath: m_ApplyRootMotion
