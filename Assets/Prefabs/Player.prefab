@@ -52,6 +52,7 @@ MonoBehaviour:
   <Controller>k__BackingField: {fileID: 4022724704996129320}
   <animator>k__BackingField: {fileID: 4577250972124265791}
   <FreeLookMovementSpeed>k__BackingField: 6
+  <RotationDamping>k__BackingField: 10
 --- !u!114 &2970822178574780589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,7 +84,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1.9
-  m_Radius: 0.35
+  m_Radius: 0.7
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.029

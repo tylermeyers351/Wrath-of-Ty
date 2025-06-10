@@ -1,9 +1,13 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerTestState : PlayerBaseState
+public class PlayerFreeLookState : PlayerBaseState
 {
-    public PlayerTestState(PlayerStateMachine stateMachine) : base(stateMachine) { }
+    private readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
+
+    private const float AnimatorDampTime = 0.1f;
+
+    public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
@@ -18,18 +22,28 @@ public class PlayerTestState : PlayerBaseState
 
         if (stateMachine.InputReader.MovementValue == Vector2.zero)
         {
-            stateMachine.animator.SetFloat("FreeLookSpeed", 0, 0.1f, deltaTime);
+            stateMachine.animator.SetFloat(FreeLookSpeedHash, 0, AnimatorDampTime, deltaTime);
             return;
         }
 
-        stateMachine.animator.SetFloat("FreeLookSpeed", 1, 0.1f, deltaTime);
-        stateMachine.transform.rotation = Quaternion.LookRotation(movement);
+        stateMachine.animator.SetFloat(FreeLookSpeedHash, 1, AnimatorDampTime, deltaTime);
+
+        FaceMovementDirection(movement, deltaTime);
 
     }
+
 
     public override void Exit()
     {
 
+    }
+
+    private void FaceMovementDirection(Vector3 movement, float deltaTime)
+    {
+        stateMachine.transform.rotation = Quaternion.Lerp(
+            stateMachine.transform.rotation,
+            Quaternion.LookRotation(movement),
+            deltaTime * stateMachine.RotationDamping);
     }
 
     private Vector3 CalculateMovement()
@@ -39,8 +53,12 @@ public class PlayerTestState : PlayerBaseState
         Vector3 forward = stateMachine.MainCameraTransform.forward;
         Vector3 right = stateMachine.MainCameraTransform.right;
 
+        Debug.Log("Forward Vector: " + forward);
+        Debug.Log("Right Vector: " + right);
+
         forward.y = 0f;
         right.y = 0f;
+
 
         forward.Normalize();
         right.Normalize();
