@@ -48,13 +48,13 @@ public class PlayerFreeLookState : PlayerBaseState
 
     private Vector3 CalculateMovement()
     {
-        Debug.Log("Input: " + stateMachine.InputReader.MovementValue);
+        // Debug.Log("Input: " + stateMachine.InputReader.MovementValue);
 
         Vector3 forward = stateMachine.MainCameraTransform.forward;
         Vector3 right = stateMachine.MainCameraTransform.right;
 
-        Debug.Log("Forward Vector: " + forward);
-        Debug.Log("Right Vector: " + right);
+        // Debug.Log("Forward Vector: " + forward);
+        // Debug.Log("Right Vector: " + right);
 
         forward.y = 0f;
         right.y = 0f;
