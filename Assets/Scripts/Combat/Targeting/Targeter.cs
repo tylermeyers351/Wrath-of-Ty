@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Targeter : MonoBehaviour
@@ -7,12 +8,18 @@ public class Targeter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Enter: ");
+        if (!other.TryGetComponent<Target>(out Target target)) { return; }
+        {
+            targets.Add(target);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Exit: ");
+        if (!other.TryGetComponent<Target>(out Target target)) { return; }
+        {
+            targets.Remove(target);
+        }
     }
 }
 
