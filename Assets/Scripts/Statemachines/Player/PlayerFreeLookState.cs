@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerFreeLookState : PlayerBaseState
 {
-    private readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
     private readonly int FreeLookAnimatorHash = Animator.StringToHash("FreeLookBlendTree");
+    private readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
 
     private const float AnimatorDampTime = 0.1f;
 
