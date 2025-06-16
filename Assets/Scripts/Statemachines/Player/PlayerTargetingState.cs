@@ -9,7 +9,7 @@ public class PlayerTargetingState : PlayerBaseState
     private readonly int TargetingForwardHash = Animator.StringToHash("TargetingForward");
     private readonly int TargetingRightHash = Animator.StringToHash("TargetingRight");
 
-    private const float AnimatorDampTime = 0.1f;
+    private const float AnimatorDampTime = 0.04f;
 
     public PlayerTargetingState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
@@ -21,11 +21,16 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        if (stateMachine.Targeter.CurrentTarget == null)
+        if (stateMachine.InputReader.IsAttacking)
         {
-            stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+            stateMachine.SwitchState(new PlayerAttackingState(stateMachine));
             return;
         }
+        if (stateMachine.Targeter.CurrentTarget == null)
+            {
+                stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+                return;
+            }
 
         Vector3 movement = CalculateMovement();
 
