@@ -3858,6 +3858,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7645414892706582254, guid: 05f9adc2e7a2b9941ba09ab31ddeb6c6, type: 3}
   m_PrefabInstance: {fileID: 75371224}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &76584192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 957154119757646856, guid: 2b5e5b71a83ca664182e2f0fa58f4267, type: 3}
+  m_PrefabInstance: {fileID: 1015802123}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &76584195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76584192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeac54cc416314d4dbe83338c00d3c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCollider: {fileID: 2099319557}
+--- !u!54 &76584196
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76584192}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &77108310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14805,6 +14850,7 @@ GameObject:
   - component: {fileID: 351782801}
   - component: {fileID: 351782800}
   - component: {fileID: 351782799}
+  - component: {fileID: 351782804}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -14913,6 +14959,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &351782804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351782798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf2bfe065a248d74db13b6240d2e8acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1001 &353742421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42425,7 +42484,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 957154119757646856, guid: 2b5e5b71a83ca664182e2f0fa58f4267, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 76584195}
+    - targetCorrespondingSourceObject: {fileID: 957154119757646856, guid: 2b5e5b71a83ca664182e2f0fa58f4267, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 76584196}
   m_SourcePrefab: {fileID: 100100000, guid: 2b5e5b71a83ca664182e2f0fa58f4267, type: 3}
 --- !u!1001 &1015962359
 PrefabInstance:
@@ -64258,6 +64323,7 @@ GameObject:
   - component: {fileID: 1514367965}
   - component: {fileID: 1514367964}
   - component: {fileID: 1514367963}
+  - component: {fileID: 1514367968}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -64366,6 +64432,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1514367968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514367962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf2bfe065a248d74db13b6240d2e8acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1001 &1517963718
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -85929,6 +86008,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 287429727301797840, guid: 554fcb49044607e4ead934c2f411608f, type: 3}
   m_PrefabInstance: {fileID: 2098267013}
+  m_PrefabAsset: {fileID: 0}
+--- !u!143 &2099319557 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 7004525001265392221, guid: 2b5e5b71a83ca664182e2f0fa58f4267, type: 3}
+  m_PrefabInstance: {fileID: 1015802123}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2099406112
 PrefabInstance:
