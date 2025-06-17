@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerAttackingState : PlayerBaseState
@@ -13,29 +14,44 @@ public class PlayerAttackingState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.Animator.CrossFadeInFixedTime(currentAttack.AnimationName, 0.1f);
+        stateMachine.Animator.CrossFadeInFixedTime(currentAttack.AnimationName, currentAttack.TransitionDuration);
     }
 
     public override void Tick(float deltaTime)
     {
+        //gravity
+
+        Move(deltaTime);
+        FaceTarget();
+
         float normalizedTime = GetNormalizedTime();
         if (normalizedTime > previousFrameTime && normalizedTime < 1f)
         {
             if (stateMachine.InputReader.IsAttacking)
             {
-                // TryComboAttack(normalizedTime);
+                TryComboAttack(normalizedTime);
             }
         }
         else
         {
-            //go back to free look state
+            //go back to free look or targeting
         }
         previousFrameTime = normalizedTime;
     }
 
+
     public override void Exit()
     {
 
+    }
+
+    private void TryComboAttack(float normalizedTime)
+    {
+        if (currentAttack.ComboStateIndex == -1) { return; }
+
+        if (normalizedTime < currentAttack.ComboAttackTime) { return; }
+
+        stateMachine.SwitchState(new PlayerAttackingState(stateMachine, currentAttack.ComboStateIndex));
     }
 
     private float GetNormalizedTime()
