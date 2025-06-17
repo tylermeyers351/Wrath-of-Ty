@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerAttackingState : PlayerBaseState
 {
     private float previousFrameTime;
+    private bool alreadAppliedForce;
 
     private Attack currentAttack;
 
@@ -25,8 +26,15 @@ public class PlayerAttackingState : PlayerBaseState
         FaceTarget();
 
         float normalizedTime = GetNormalizedTime();
-        if (normalizedTime > previousFrameTime && normalizedTime < 1f)
+
+
+        if (normalizedTime >= previousFrameTime && normalizedTime < 1f)
         {
+            if (normalizedTime > currentAttack.ForceTime)
+            {
+                TryApplyForce();
+            }
+
             if (stateMachine.InputReader.IsAttacking)
             {
                 TryComboAttack(normalizedTime);
@@ -34,7 +42,15 @@ public class PlayerAttackingState : PlayerBaseState
         }
         else
         {
-            //go back to free look or targeting
+            if (stateMachine.Targeter.CurrentTarget != null)
+            {
+                stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+            }
+            else
+            {
+                stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+            }
+            
         }
         previousFrameTime = normalizedTime;
     }
@@ -73,4 +89,10 @@ public class PlayerAttackingState : PlayerBaseState
         }
     }
 
+    private void TryApplyForce()
+    {
+        if (alreadAppliedForce) { return; }
+        stateMachine.ForceReceiver.AddForce(stateMachine.transform.forward * currentAttack.Force);
+        alreadAppliedForce = true;
+    }
 }
