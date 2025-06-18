@@ -4,6 +4,7 @@ using UnityEngine;
 public class WeaponDamage : MonoBehaviour
 {
     [SerializeField] private Collider myCollider;
+    private int setDamage;
 
     private List<Collider> alreadyCollidedWith = new List<Collider>();
 
@@ -22,12 +23,12 @@ public class WeaponDamage : MonoBehaviour
 
         if (other.TryGetComponent<Health>(out Health health))
         {
-            health.DealDamage(10);
+            health.DealDamage(setDamage);
         }
     }
 
     public void SetAttack(int damageAmount)
     {
-
+        setDamage = damageAmount;
     }
 }
