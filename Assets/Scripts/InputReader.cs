@@ -9,6 +9,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public bool IsAttacking { get; private set; }
 
+    public bool IsSprinting { get; private set; }
+
     public event Action JumpEvent;
 
     public event Action DodgeEvent;
@@ -81,5 +83,17 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         if (!context.performed) return;
 
         CancelEvent?.Invoke();
+    }
+
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            IsSprinting = true;
+        }
+        else if (context.canceled)
+        {
+            IsSprinting = false;
+        }
     }
 }

@@ -39,7 +39,18 @@ public class PlayerFreeLookState : PlayerBaseState
             return;
         }
 
-        stateMachine.Animator.SetFloat(FreeLookSpeedHash, 1, AnimatorDampTime, deltaTime);
+        if (stateMachine.InputReader.IsSprinting)
+        {
+            stateMachine.FreeLookMovementSpeed = 10;
+            stateMachine.Animator.SetFloat(FreeLookSpeedHash, 2, AnimatorDampTime, deltaTime);
+            Debug.Log("Sprinting");
+        }
+        else
+        {
+            stateMachine.Animator.SetFloat(FreeLookSpeedHash, 1, AnimatorDampTime, deltaTime);
+            stateMachine.FreeLookMovementSpeed = 6;
+        }
+
 
         FaceMovementDirection(movement, deltaTime);
 
