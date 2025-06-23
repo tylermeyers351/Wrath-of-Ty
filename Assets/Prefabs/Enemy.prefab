@@ -1420,6 +1420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Animator>k__BackingField: {fileID: 603696105202773153}
+  <PlayerChasingRange>k__BackingField: 10
 --- !u!114 &5278318936914082276
 MonoBehaviour:
   m_ObjectHideFlags: 0
