@@ -9,22 +9,41 @@ public abstract class EnemyBaseState : State
         this.stateMachine = stateMachine;
     }
 
+    protected void Move(Vector3 motion, float deltaTime)
+    {
+        Vector3 vertMovement = stateMachine.ForceReceiver.Movement;
+        stateMachine.Controller.Move((motion + vertMovement) * deltaTime);
+    }
+    protected void Move(float deltaTime)
+    {
+        Move(Vector3.zero, deltaTime);
+    }
+
+    protected void FacePlayer()
+    {
+        if (stateMachine.Player == null) { return; }
+
+        Vector3 playerVect = stateMachine.Player.transform.position;
+        Vector3 enemyVect = stateMachine.transform.position;
+
+        Vector3 lookPos = playerVect - enemyVect;
+
+        lookPos.y = 0;
+
+        stateMachine.transform.rotation = Quaternion.LookRotation(lookPos);
+    }
+
     protected bool IsInChaseRange()
     {
-        Vector3 playerPos = stateMachine.Player.transform.position;
-        Vector3 enemyPos = stateMachine.transform.position;
+        float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
 
-        float distanceBetween = Vector3.Distance(playerPos, enemyPos);
-        float playerChasingRange = stateMachine.PlayerChasingRange;
+        return playerDistanceSqr <= stateMachine.PlayerChasingRange * stateMachine.PlayerChasingRange;
+    }
+    
+    protected bool IsInAttackRange()
+    {
+        float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
 
-        if (distanceBetween <= playerChasingRange)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-
+        return playerDistanceSqr <= stateMachine.AttackRange * stateMachine.AttackRange;
     }
 }
