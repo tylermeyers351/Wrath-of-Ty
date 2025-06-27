@@ -1,4 +1,5 @@
 using System;
+using Unity.Cinemachine;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -19,20 +20,27 @@ public class PlayerTargetingState : PlayerBaseState
     {
         stateMachine.InputReader.CancelEvent += OnCancel;
         stateMachine.Animator.CrossFadeInFixedTime(TargetingBlendTreeHash, CrossFadeDuration);
+
     }
 
     public override void Tick(float deltaTime)
     {
+        if (stateMachine.InputReader.IsBlocking)
+        {
+            stateMachine.SwitchState(new PlayerBlockingState(stateMachine));
+            return;
+        }
+        
         if (stateMachine.InputReader.IsAttacking)
         {
             stateMachine.SwitchState(new PlayerAttackingState(stateMachine, 0));
             return;
         }
         if (stateMachine.Targeter.CurrentTarget == null)
-            {
-                stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
-                return;
-            }
+        {
+            stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+            return;
+        }
 
         Vector3 movement = CalculateMovement();
 

@@ -6,19 +6,28 @@ public class Health : MonoBehaviour
     [SerializeField] private int maxHealth = 100;
 
     private int health;
+    private bool canDamage;
 
     public event Action OnTakeDamage;
 
     public event Action OnDeath;
+
+    public bool IsDead => health == 0;
 
     private void Start()
     {
         health = maxHealth;
     }
 
+    public void SetDamageable(bool canDamage)
+    {
+        this.canDamage = canDamage;
+    }
+
     public void DealDamage(int damageAmount)
     {
         if (health <= 0) { return; }
+        if(canDamage) { return; }
         health = (int)MathF.Max(health - damageAmount, 0);
         OnTakeDamage?.Invoke();
         // Debug.Log("Health: " + health);
