@@ -14,6 +14,10 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public float FreeLookMovementSpeed { get; set; }
     [field: SerializeField] public float TargetingMovementSpeed { get; private set; }
     [field: SerializeField] public float RotationDamping { get; private set; }
+    [field: SerializeField] public float DodgeDuration { get; private set; }
+    [field: SerializeField] public float DodgeLength { get; private set; }
+    [field: SerializeField] public float PreviousDodgeTime { get; private set; } = Mathf.NegativeInfinity;
+    [field: SerializeField] public float DodgeCooldown { get; private set; }
 
     [field: SerializeField] public Attack[] Attacks { get; private set; }
     public Transform MainCameraTransform { get; private set; }
@@ -44,5 +48,10 @@ public class PlayerStateMachine : StateMachine
     private void HandleTakeDamage()
     {
         SwitchState(new PlayerImpactState(this));
+    }
+
+    public void SetDodgeTime(float priorDodgeTime)
+    {
+        PreviousDodgeTime = priorDodgeTime;
     }
 }
