@@ -42332,26 +42332,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Play Rig
       objectReference: {fileID: 0}
-    - target: {fileID: 2711849624553035056, guid: 2b5e5b71a83ca664182e2f0fa58f4267, type: 3}
-      propertyPath: <JumpForce>k__BackingField
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2711849624553035056, guid: 2b5e5b71a83ca664182e2f0fa58f4267, type: 3}
-      propertyPath: <DodgeLength>k__BackingField
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 2711849624553035056, guid: 2b5e5b71a83ca664182e2f0fa58f4267, type: 3}
-      propertyPath: <DodgeCooldown>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2711849624553035056, guid: 2b5e5b71a83ca664182e2f0fa58f4267, type: 3}
-      propertyPath: <DodgeDuration>k__BackingField
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6072095217146822727, guid: 2b5e5b71a83ca664182e2f0fa58f4267, type: 3}
-      propertyPath: DefaultBlend.Style
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8118356305161407986, guid: 2b5e5b71a83ca664182e2f0fa58f4267, type: 3}
       propertyPath: m_LocalPosition.x
       value: 63.822056
