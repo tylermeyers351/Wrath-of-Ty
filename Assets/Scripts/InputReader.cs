@@ -19,9 +19,6 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public event Action TargetEvent;
 
-    public event Action CancelEvent;
-
-
     private Controls controls;
 
     private void Start()
@@ -90,13 +87,6 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         {
             IsBlocking = false;
         }
-    }
-
-    public void OnCancel(InputAction.CallbackContext context)
-    {
-        if (!context.performed) return;
-
-        CancelEvent?.Invoke();
     }
 
     public void OnSprint(InputAction.CallbackContext context)

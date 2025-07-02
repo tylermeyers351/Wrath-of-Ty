@@ -4,19 +4,34 @@ using UnityEngine;
 
 public class PlayerFreeLookState : PlayerBaseState
 {
+    private bool shouldFade;
+
     private readonly int FreeLookAnimatorHash = Animator.StringToHash("FreeLookBlendTree");
     private readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
 
     private const float AnimatorDampTime = 0.1f;
     private const float CrossFadeDuration = 0.1f;
 
-    public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine) { }
+    public PlayerFreeLookState(PlayerStateMachine stateMachine, bool shouldFade = true) : base(stateMachine)
+    {
+        this.shouldFade = shouldFade;
+    }
 
     public override void Enter()
     {
         stateMachine.InputReader.TargetEvent += OnTarget;
         stateMachine.InputReader.JumpEvent += OnJump;
-        stateMachine.Animator.CrossFadeInFixedTime(FreeLookAnimatorHash, CrossFadeDuration);
+
+        stateMachine.Animator.SetFloat(FreeLookSpeedHash, 0f);
+
+        if (shouldFade)
+        {
+            stateMachine.Animator.CrossFadeInFixedTime(FreeLookAnimatorHash, CrossFadeDuration);
+        }
+        else
+        {
+            stateMachine.Animator.Play(FreeLookAnimatorHash);
+        }
     }
 
 
@@ -36,19 +51,19 @@ public class PlayerFreeLookState : PlayerBaseState
 
         if (stateMachine.InputReader.MovementValue == Vector2.zero)
         {
-            stateMachine.Animator.SetFloat(FreeLookSpeedHash, 0, AnimatorDampTime, deltaTime);
+            stateMachine.Animator.SetFloat(FreeLookSpeedHash, 0f, AnimatorDampTime, deltaTime);
             return;
         }
 
         if (stateMachine.InputReader.IsSprinting)
         {
             stateMachine.FreeLookMovementSpeed = 10;
-            stateMachine.Animator.SetFloat(FreeLookSpeedHash, 2, AnimatorDampTime, deltaTime);
+            stateMachine.Animator.SetFloat(FreeLookSpeedHash, 2f, AnimatorDampTime, deltaTime);
             Debug.Log("Sprinting");
         }
         else
         {
-            stateMachine.Animator.SetFloat(FreeLookSpeedHash, 1, AnimatorDampTime, deltaTime);
+            stateMachine.Animator.SetFloat(FreeLookSpeedHash, 1f, AnimatorDampTime, deltaTime);
             stateMachine.FreeLookMovementSpeed = 6;
         }
 

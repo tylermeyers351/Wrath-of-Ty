@@ -29,6 +29,12 @@ public class PlayerHangingState : PlayerBaseState
             stateMachine.ForceReceiver.Reset();
             stateMachine.SwitchState(new PlayerFallingState(stateMachine));
         }
+        else if (Input.GetKeyDown(KeyCode.W))
+        {
+            stateMachine.Controller.Move(Vector3.zero);
+            stateMachine.ForceReceiver.Reset();
+            stateMachine.SwitchState(new PlayerPullUpState(stateMachine));
+        }   
     }
     
     public override void Exit()
