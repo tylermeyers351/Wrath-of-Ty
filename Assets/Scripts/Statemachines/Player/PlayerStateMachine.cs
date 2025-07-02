@@ -10,7 +10,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public WeaponDamage Weapon { get; private set; }
     [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public Ragdoll ragdoll { get; private set; }
-    [field: SerializeField] public LedgeDetector ledgeDetector { get; private set; }
+    [field: SerializeField] public LedgeDetector LedgeDetector { get; private set; }
 
     [field: SerializeField] public float FreeLookMovementSpeed { get; set; }
     [field: SerializeField] public float TargetingMovementSpeed { get; private set; }
