@@ -30,7 +30,7 @@ public class Health : MonoBehaviour
         if(canDamage) { return; }
         health = (int)MathF.Max(health - damageAmount, 0);
         OnTakeDamage?.Invoke();
-        // Debug.Log("Health: " + health);
+        Debug.Log("Health: " + health);
 
         if (health == 0)
         {
