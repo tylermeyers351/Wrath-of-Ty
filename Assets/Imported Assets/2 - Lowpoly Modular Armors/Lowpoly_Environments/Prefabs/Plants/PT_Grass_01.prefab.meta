@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d0a220c4e9303914d88d417444a10971
+guid: bbabf78c752a7114aa85d108c86f3d9b
 PrefabImporter:
   externalObjects: {}
   userData: 
@@ -7,8 +7,8 @@ PrefabImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 199890
-  packageName: Lowpoly Modular Armors - Free - MEDIEVAL FANTASY SERIES
-  packageVersion: 1.2.1
-  assetPath: Assets/Polytope Studio/Lowpoly_Environments/Prefabs/Plants/PT_Grass_01.prefab
-  uploadId: 721310
+  productId: 122225
+  packageName: Lowpoly Medieval Peasants - Free - MEDIEVAL FANTASY SERIES
+  packageVersion: 4.2.1
+  assetPath: Assets/Imported Assets/2 - Lowpoly Modular Armors/Lowpoly_Environments/Prefabs/Plants/PT_Grass_01.prefab
+  uploadId: 721311

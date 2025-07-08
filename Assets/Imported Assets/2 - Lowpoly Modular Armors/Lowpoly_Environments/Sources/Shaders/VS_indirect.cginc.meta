@@ -7,3 +7,10 @@ ShaderImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 122225
+  packageName: Lowpoly Medieval Peasants - Free - MEDIEVAL FANTASY SERIES
+  packageVersion: 4.2.1
+  assetPath: Assets/Imported Assets/2 - Lowpoly Modular Armors/Lowpoly_Environments/Sources/Shaders/VS_indirect.cginc
+  uploadId: 721311
