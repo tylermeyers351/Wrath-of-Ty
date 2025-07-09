@@ -9,8 +9,8 @@ public class EnemyIdleState : EnemyBaseState
 
     private float breakTimer = 0f;
     private float nextBreakTime;
-    private float minBreak = 6f;
-    private float maxBreak = 15f;
+    private float minBreak = 25f;
+    private float maxBreak = 45f;
 
     private const float AnimatorDampTime = 0.1f;
     private const float CrossFadeDuration = 0.1f;
