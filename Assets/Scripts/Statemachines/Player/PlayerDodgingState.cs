@@ -32,8 +32,8 @@ public class PlayerDodgingState : PlayerBaseState
     public override void Tick(float deltaTime)
     {
         UnityEngine.Vector3 movement = new UnityEngine.Vector3();
-        movement += stateMachine.transform.right * dodgingDirectionInput.x * stateMachine.DodgeLength / stateMachine.DodgeDuration;
-        movement += stateMachine.transform.forward * dodgingDirectionInput.y * stateMachine.DodgeLength / stateMachine.DodgeDuration;
+        movement += 2f * stateMachine.transform.right * dodgingDirectionInput.x * stateMachine.DodgeLength / stateMachine.DodgeDuration;
+        movement += 2f * stateMachine.transform.forward * dodgingDirectionInput.y * stateMachine.DodgeLength / stateMachine.DodgeDuration;
         Move(movement, deltaTime);
         FaceTarget();
         remainingDodgeTime -= deltaTime;
