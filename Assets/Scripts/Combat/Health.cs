@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
     [SerializeField] AudioSource damageAudioSource;
     [SerializeField] AudioSource hurtAudioSource;
     [SerializeField] AudioSource deathAudioSource;
+    [SerializeField] AudioSource blockAudioSource;
 
     private int health;
     private bool canDamage;
@@ -30,7 +31,11 @@ public class Health : MonoBehaviour
     public void DealDamage(int damageAmount)
     {
         if (health <= 0) { return; }
-        if(canDamage) { return; }
+        if (canDamage)
+        {
+            blockAudioSource.Play();
+            return;
+        }
         health = (int)MathF.Max(health - damageAmount, 0);
         OnTakeDamage?.Invoke();
 
@@ -40,6 +45,7 @@ public class Health : MonoBehaviour
 
         if (health == 0)
         {
+            hurtAudioSource.Stop();
             OnDeath?.Invoke();
             deathAudioSource.Play();
             Debug.Log($"{gameObject.name} died...");

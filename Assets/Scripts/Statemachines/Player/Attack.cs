@@ -12,4 +12,8 @@ public class Attack
     [field: SerializeField] public float Force { get; private set; }
     [field: SerializeField] public int Damage { get; private set; } = 10;
     [field: SerializeField] public float Knockback { get; private set; }
+    [field: SerializeField] public AudioSource audioSource { get; private set; }
+    [field: SerializeField] public float audioDelay { get; private set; }
+    [field: SerializeField] public AudioSource effortAudioSource { get; private set; }
+    [field: SerializeField] public float effortAudioDelay { get; private set; }
 }
