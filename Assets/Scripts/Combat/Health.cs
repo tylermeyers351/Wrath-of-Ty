@@ -37,7 +37,7 @@ public class Health : MonoBehaviour
                 return;
             }
         }
-        Debug.Log("Intensity is set to: " + vignette.intensity);
+        // Debug.Log("Intensity is set to: " + vignette.intensity);
     }
 
     public void SetDamageable(bool canDamage)
