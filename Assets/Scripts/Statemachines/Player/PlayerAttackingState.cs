@@ -17,7 +17,7 @@ public class PlayerAttackingState : PlayerBaseState
     {
         stateMachine.Animator.CrossFadeInFixedTime(currentAttack.AnimationName, currentAttack.TransitionDuration);
         stateMachine.Weapon.SetAttack(currentAttack.Damage, currentAttack.Knockback);
-        Debug.Log("Current damage: " + currentAttack.Damage);
+        // Debug.Log("Current damage: " + currentAttack.Damage);
         currentAttack.audioSource.PlayDelayed(currentAttack.audioDelay);
         currentAttack.effortAudioSource.PlayDelayed(currentAttack.effortAudioDelay);
     }

@@ -59,7 +59,7 @@ public class PlayerFreeLookState : PlayerBaseState
         {
             stateMachine.FreeLookMovementSpeed = 10;
             stateMachine.Animator.SetFloat(FreeLookSpeedHash, 2f, AnimatorDampTime, deltaTime);
-            Debug.Log("Sprinting");
+            // Debug.Log("Sprinting");
         }
         else
         {

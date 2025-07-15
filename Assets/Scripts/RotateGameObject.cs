@@ -1,6 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor.UIElements;
 using UnityEngine;
 
 public class RotateGameObject : MonoBehaviour
@@ -12,6 +10,8 @@ public class RotateGameObject : MonoBehaviour
     [SerializeField] GameObject tipsUI;
     [SerializeField] GameObject thanksUI;
 
+    bool cheeseTriggered = false;
+
     void Update()
     {
         transform.Rotate(rotationSpeed * Time.deltaTime);
@@ -19,12 +19,13 @@ public class RotateGameObject : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && other.TryGetComponent<Health>(out Health health))
+        if (other.CompareTag("Player") && other.TryGetComponent<Health>(out Health health) && !cheeseTriggered)
         {
-            Debug.Log("No one made it out...");
+            // Debug.Log("No one made it out...");
             GetComponent<MeshRenderer>().enabled = false;
             audioSource.Play();
             StartCoroutine(ShowUIAfterDelay());
+            cheeseTriggered = true;
         }
     }
 

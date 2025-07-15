@@ -71,7 +71,10 @@ public class Health : MonoBehaviour
             hurtAudioSource.Stop();
             OnDeath?.Invoke();
             deathAudioSource.Play();
-            vignette.intensity.value = Mathf.Clamp01(vignette.intensity.value + 0.4f);
+            if (vignette != null)
+            {
+                vignette.intensity.value = Mathf.Clamp01(vignette.intensity.value + 0.4f);
+            }
             // Debug.Log($"{gameObject.name} died...");
         }
     }

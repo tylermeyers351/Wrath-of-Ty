@@ -1,9 +1,11 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class IntroManager : MonoBehaviour
 {
+    
     [SerializeField] GameObject blackPanel;
     [SerializeField] GameObject controlsUI;
 
@@ -20,10 +22,37 @@ public class IntroManager : MonoBehaviour
     [SerializeField] float subtitleTime5 = 3f;
     [SerializeField] float finalDelay = 1f;
 
+    [SerializeField] GameObject spacebarUI;
+
+    public static IntroManager Instance { get; private set; }
+    public bool controlReady { get; private set; } = false;
+
+    private bool hasStarted = false;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
+
     void Start()
     {
         blackPanel.SetActive(true);
-        StartCoroutine(OpeningSequence());
+    }
+
+    void Update()
+    {
+        if (!hasStarted && Input.GetKeyDown(KeyCode.Space))
+        {
+            hasStarted = true;
+            spacebarUI.SetActive(false);
+            StartCoroutine(OpeningSequence());
+        }
     }
 
     private string[] lines = new string[]
@@ -70,6 +99,8 @@ public class IntroManager : MonoBehaviour
 
         blackPanel.SetActive(false);
         musicAudio.Play();
+
+        controlReady = true; 
 
     }
 }

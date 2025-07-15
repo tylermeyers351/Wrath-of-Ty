@@ -7,7 +7,6 @@ public class WeaponDamage : MonoBehaviour
     [SerializeField] private Collider myCollider;
     [SerializeField] private AudioSource audioSource;
 
-    private float audioDelay = 0.1f;
     private int setDamage;
     private float setKnockback;
 
@@ -16,7 +15,10 @@ public class WeaponDamage : MonoBehaviour
     private void OnEnable()
     {
         alreadyCollidedWith.Clear();
-        audioSource.Play();
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
     }
 
     private void OnTriggerEnter(Collider other)

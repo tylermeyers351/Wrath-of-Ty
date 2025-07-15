@@ -36,6 +36,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnJump(InputAction.CallbackContext context)
     {
+        if (!IntroManager.Instance.controlReady) return;
         if (!context.performed) return;
         
         JumpEvent?.Invoke();
@@ -43,6 +44,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnDodge(InputAction.CallbackContext context)
     {
+        if (!IntroManager.Instance.controlReady) return;
         if (!context.performed) return;
 
         DodgeEvent?.Invoke();
@@ -50,16 +52,19 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (!IntroManager.Instance.controlReady) return;
         MovementValue = context.ReadValue<Vector2>();
     }
 
     public void OnLook(InputAction.CallbackContext context)
     {
+        if (!IntroManager.Instance.controlReady) return;
         //Cinemachine is using this method.
     }
 
     public void OnTarget(InputAction.CallbackContext context)
     {
+        if (!IntroManager.Instance.controlReady) return;
         if (!context.performed) return;
 
         TargetEvent?.Invoke();
@@ -67,6 +72,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnAttack(InputAction.CallbackContext context)
     {
+        if (!IntroManager.Instance.controlReady) return;
         if (context.started)
         {
             IsAttacking = true;
@@ -79,6 +85,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnBlock(InputAction.CallbackContext context)
     {
+        if (!IntroManager.Instance.controlReady) return;
         if (context.started)
         {
             IsBlocking = true;
@@ -91,6 +98,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnSprint(InputAction.CallbackContext context)
     {
+        if (!IntroManager.Instance.controlReady) return;
         if (context.started)
         {
             IsSprinting = true;

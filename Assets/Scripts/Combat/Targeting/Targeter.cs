@@ -61,7 +61,7 @@ public class Targeter : MonoBehaviour
                 closestTargetDistance = toCenter.sqrMagnitude;
             }
 
-            Debug.Log("Vector2: " + viewPos);
+            // Debug.Log("Vector2: " + viewPos);
         }
 
         if (closestTarget == null) { return false; }
