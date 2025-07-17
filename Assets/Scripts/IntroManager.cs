@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class IntroManager : MonoBehaviour
 {
-    
+
     [SerializeField] GameObject blackPanel;
     [SerializeField] GameObject controlsUI;
 
@@ -23,11 +23,14 @@ public class IntroManager : MonoBehaviour
     [SerializeField] float finalDelay = 1f;
 
     [SerializeField] GameObject spacebarUI;
+    [SerializeField] GameObject escapeUI;
 
     public static IntroManager Instance { get; private set; }
     public bool controlReady { get; private set; } = false;
 
     private bool hasStarted = false;
+
+    private bool cursorUnlocked = true;
 
     private void Awake()
     {
@@ -43,6 +46,7 @@ public class IntroManager : MonoBehaviour
     void Start()
     {
         blackPanel.SetActive(true);
+        UnlockCursor();
     }
 
     void Update()
@@ -51,8 +55,20 @@ public class IntroManager : MonoBehaviour
         {
             hasStarted = true;
             spacebarUI.SetActive(false);
+            escapeUI.SetActive(false);
             StartCoroutine(OpeningSequence());
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            UnlockCursor();
+        }
+
+        if (cursorUnlocked && Input.GetMouseButtonDown(0))
+        {
+            LockCursor();
+        }
+
     }
 
     private string[] lines = new string[]
@@ -100,7 +116,22 @@ public class IntroManager : MonoBehaviour
         blackPanel.SetActive(false);
         musicAudio.Play();
 
-        controlReady = true; 
-
+        controlReady = true;
     }
+
+    private void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        cursorUnlocked = false;
+    }
+
+    private void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        cursorUnlocked = true;
+    }
+    
+
 }
