@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Wrath of Ty.sln"
+    "dotnet.defaultSolution": "What Remains of Me.sln"
 }
